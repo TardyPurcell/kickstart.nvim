@@ -135,8 +135,8 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       -- vim.cmd.colorscheme 'onedark'
-      require('onedark').setup({ transparent = true })
-      require('onedark').load()
+      -- require('onedark').setup({ transparent = true })
+      -- require('onedark').load()
     end,
   },
 
@@ -147,7 +147,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        -- theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -426,6 +426,10 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  -- bordered documentation
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 end
 
 -- Enable the following language servers
@@ -480,6 +484,10 @@ require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
 cmp.setup {
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
