@@ -4,7 +4,7 @@ return {
   'eandrju/cellular-automaton.nvim',
   lazy = false,
   keys = {
-    { "<leader>fml", "<cmd>CellularAutomaton make_it_rain<cr>", desc = "CellularAutomaton make_it_rain" }
+    { "<leader>fml", "<cmd>CellularAutomaton scramble<cr>", desc = "CellularAutomaton make_it_rain" }
   },
   config = function()
     local M = {

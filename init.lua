@@ -317,7 +317,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- Mine
-vim.o.cursorline = true;
+-- vim.o.cursorline = true;
 vim.o.relativenumber = true;
 vim.o.shiftwidth = 2;
 
